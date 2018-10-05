@@ -1,0 +1,25 @@
+{
+  "name": "reaper-graphql",
+  "version": "0.0.1",
+  "description": "Api con typescript",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "build:run": "node build/index.js",
+    "start": "npm run build && npm run build:run"
+  },
+  "author": "ErickVAleman",
+  "license": "MIT",
+  "dependencies": {
+    "apollo-server": "^2.1.0",
+    "graphql": "^14.0.2",
+    "sequelize": "^4.39.0",
+    "tedious": "^2.6.4",
+    "typescript": "^3.1.1"
+  },
+  "devDependencies": {
+    "@types/graphql": "^14.0.1",
+    "@types/sequelize": "^4.27.26",
+    "tslint": "^5.11.0"
+  }
+}
