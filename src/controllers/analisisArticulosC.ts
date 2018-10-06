@@ -1,19 +1,10 @@
 import newQuery from "../SQL/dinamicConn";
 
 async function analisiArticulosC() {
-  const SQLQuery: string = `
-    SELECT Articulo
-      ,Nombre
-      ,Descripcion
-      ,Relacion = '['+ CAST(CAST(FactorCompra AS INT) AS VARCHAR) + UnidadCompra + ' / '
-        + CAST(CAST(FactorVenta AS INT) AS VARCHAR) + UnidadVenta +']'
-    FROM Articulos
-    `;
-  return await newQuery("remote", "bo", SQLQuery);
+  // TODO
 }
 
 const selectArticulos = async () => {
-  // TODO
   const SQLQuery: string = `
     SELECT Articulo
       ,Nombre
@@ -26,3 +17,6 @@ const selectArticulos = async () => {
 };
 
 export default analisiArticulosC;
+export {
+  selectArticulos,
+};

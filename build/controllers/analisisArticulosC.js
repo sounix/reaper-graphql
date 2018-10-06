@@ -19,11 +19,23 @@ function analisiArticulosC() {
       ,Nombre
       ,Descripcion
       ,Relacion = '['+ CAST(CAST(FactorCompra AS INT) AS VARCHAR) + UnidadCompra + ' / '
-      + CAST(CAST(FactorVenta AS INT) AS VARCHAR) + UnidadVenta +']'
+        + CAST(CAST(FactorVenta AS INT) AS VARCHAR) + UnidadVenta +']'
     FROM Articulos
     `;
         return yield dinamicConn_1.default("remote", "bo", SQLQuery);
     });
 }
+const selectArticulos = () => __awaiter(this, void 0, void 0, function* () {
+    // TODO
+    const SQLQuery = `
+    SELECT Articulo
+      ,Nombre
+      ,Descripcion
+      ,Relacion = '['+ CAST(CAST(FactorCompra AS INT) AS VARCHAR) + UnidadCompra + ' / '
+        + CAST(CAST(FactorVenta AS INT) AS VARCHAR) + UnidadVenta +']'
+    FROM Articulos
+  `;
+    return yield dinamicConn_1.default("remote", "bo", SQLQuery);
+});
 exports.default = analisiArticulosC;
 //# sourceMappingURL=analisisArticulosC.js.map
