@@ -4,7 +4,8 @@ const Resolvers = {
    async articulos() {
        return await controller();
       },
-   async metadiaria(obj: any, args: any, context: any, info: any) {
+   async metadiaria(obj: any, { suc }: { suc: string }, context: any, info: any) {
+        console.log(suc);
         return "hello";
       },
   },

@@ -1,4 +1,4 @@
 node_modules
 package-lock.json
-/SQL/conf.ts
+src/SQL/conf.ts
 build
