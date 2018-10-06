@@ -1,5 +1,6 @@
 import db from "./bin";
 import conf from "./conf";
+
 interface IreadConf {
   name: string;
   suc: string;
@@ -10,16 +11,20 @@ interface IreadConf {
   remote: string;
   local: string;
 }
+
+type Tsuc = "vc"|"zr"|"ou"|"jl"|"bo";
+type Ttipo = "local" | "remote";
+
 /**
  *
  * @param i
  * @param tipo
  * @param suc
  */
-function readConnection(i: IreadConf[], tipo: "local" | "remote", suc: "vc"|"zr"|"ou"|"jl"|"bo") {
+function readConnection(i: IreadConf[], tipo: Ttipo, suc: Tsuc) {
   let objConn: IreadConf | undefined;
   i.map((c) => {
-    if (c.name === suc || c.suc === suc.toUpperCase()) {
+    if (c.name === suc.toLowerCase() || c.suc === suc.toLowerCase()) {
       objConn = c;
       return;
     }
@@ -30,8 +35,13 @@ function readConnection(i: IreadConf[], tipo: "local" | "remote", suc: "vc"|"zr"
   }
   throw new Error("Error al crear conexion");
 }
-
-async function newRawQuery(tipo: "local" | "remote", suc: "vc"|"zr"|"ou"|"jl"|"bo", query: string) {
+/**
+ *
+ * @param tipo "local" | "remote"
+ * @param suc "vc" | "zr" | "ou" | "jl" | "bo"
+ * @param query "cadena SQL"
+ */
+async function newRawQuery(tipo: Ttipo, suc: Tsuc, query: string) {
   // TODO
   const goDb = readConnection(conf, tipo, suc);
   if (goDb) {

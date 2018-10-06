@@ -12,21 +12,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const dinamicConn_1 = __importDefault(require("../SQL/dinamicConn"));
+const stadistics = (suc) => ({});
 function analisiArticulosC() {
     return __awaiter(this, void 0, void 0, function* () {
-        const SQLQuery = `
-    SELECT Articulo
-      ,Nombre
-      ,Descripcion
-      ,Relacion = '['+ CAST(CAST(FactorCompra AS INT) AS VARCHAR) + UnidadCompra + ' / '
-        + CAST(CAST(FactorVenta AS INT) AS VARCHAR) + UnidadVenta +']'
-    FROM Articulos
-    `;
-        return yield dinamicConn_1.default("remote", "bo", SQLQuery);
+        // TODO
     });
 }
 const selectArticulos = () => __awaiter(this, void 0, void 0, function* () {
-    // TODO
     const SQLQuery = `
     SELECT Articulo
       ,Nombre
@@ -37,5 +29,6 @@ const selectArticulos = () => __awaiter(this, void 0, void 0, function* () {
   `;
     return yield dinamicConn_1.default("remote", "bo", SQLQuery);
 });
+exports.selectArticulos = selectArticulos;
 exports.default = analisiArticulosC;
 //# sourceMappingURL=analisisArticulosC.js.map

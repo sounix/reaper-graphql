@@ -14,7 +14,22 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const analisisArticulosC_1 = __importDefault(require("../controllers/analisisArticulosC"));
 const Resolvers = {
     Query: {
-        articulos: () => __awaiter(this, void 0, void 0, function* () { return yield analisisArticulosC_1.default(); }),
+        articulos() {
+            return __awaiter(this, void 0, void 0, function* () {
+                return yield analisisArticulosC_1.default();
+            });
+        },
+        metadiaria(args, context, info) {
+            return __awaiter(this, void 0, void 0, function* () {
+                console.log("--------------------------------------------");
+                console.log(args);
+                console.log("--------------------------------------------");
+                console.log(context);
+                console.log("--------------------------------------------");
+                console.log(info);
+                return "hello";
+            });
+        },
     },
 };
 exports.default = Resolvers;

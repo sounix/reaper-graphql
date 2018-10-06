@@ -1,7 +1,6 @@
 import { gql } from "apollo-server";
 const typeDefs = gql`
   # Comments in GraphQL are defined with the hash (#) symbol.
-
   # This "Book" type can be used in other type declarations.
   type Articulos {
     Articulo: ID
@@ -13,7 +12,13 @@ const typeDefs = gql`
   # The "Query" type is the root of all GraphQL queries.
   # (A "Mutation" type will be covered later on.)
   type Query {
-    articulos: [Articulos!]!
+    articulos: [Articulos!]!,
+    metadiaria(suc:String): String,
   }
+
+  # Consulta para analisis de venta
+  # type AnalisiSuc {
+  #   # TODO
+  # }
 `;
 export default typeDefs;

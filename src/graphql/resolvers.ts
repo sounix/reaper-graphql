@@ -1,7 +1,12 @@
 import controller from "../controllers/analisisArticulosC";
 const Resolvers = {
   Query: {
-    articulos: async () => await controller(),
+   async articulos() {
+       return await controller();
+      },
+   async metadiaria(obj: any, args: any, context: any, info: any) {
+        return "hello";
+      },
   },
 };
 

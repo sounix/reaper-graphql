@@ -22,7 +22,7 @@ const conf_1 = __importDefault(require("./conf"));
 function readConnection(i, tipo, suc) {
     let objConn;
     i.map((c) => {
-        if (c.name === suc || c.suc === suc.toUpperCase()) {
+        if (c.name === suc.toLowerCase() || c.suc === suc.toLowerCase()) {
             objConn = c;
             return;
         }
@@ -33,6 +33,12 @@ function readConnection(i, tipo, suc) {
     }
     throw new Error("Error al crear conexion");
 }
+/**
+ *
+ * @param tipo "local" | "remote"
+ * @param suc "vc" | "zr" | "ou" | "jl" | "bo"
+ * @param query "cadena SQL"
+ */
 function newRawQuery(tipo, suc, query) {
     return __awaiter(this, void 0, void 0, function* () {
         // TODO

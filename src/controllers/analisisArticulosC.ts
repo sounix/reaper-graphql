@@ -1,5 +1,7 @@
 import newQuery from "../SQL/dinamicConn";
 
+type Tsuc = "vc"|"zr"|"ou"|"jl";
+const stadistics = (suc: Tsuc) => ({});
 async function analisiArticulosC() {
   // TODO
 }
