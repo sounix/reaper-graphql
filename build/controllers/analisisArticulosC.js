@@ -11,11 +11,19 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const analisisArticulosC_1 = __importDefault(require("../controllers/analisisArticulosC"));
-const Resolvers = {
-    Query: {
-        articulos: () => __awaiter(this, void 0, void 0, function* () { return yield analisisArticulosC_1.default(); }),
-    },
-};
-exports.default = Resolvers;
-//# sourceMappingURL=resolvers.js.map
+const dinamicConn_1 = __importDefault(require("../SQL/dinamicConn"));
+function analisiArticulosC() {
+    return __awaiter(this, void 0, void 0, function* () {
+        const SQLQuery = `
+    SELECT Articulo
+      ,Nombre
+      ,Descripcion
+      ,Relacion = '['+ CAST(CAST(FactorCompra AS INT) AS VARCHAR) + UnidadCompra + ' / '
+      + CAST(CAST(FactorVenta AS INT) AS VARCHAR) + UnidadVenta +']'
+    FROM Articulos
+    `;
+        return yield dinamicConn_1.default("remote", "bo", SQLQuery);
+    });
+}
+exports.default = analisiArticulosC;
+//# sourceMappingURL=analisisArticulosC.js.map

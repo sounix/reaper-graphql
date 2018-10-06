@@ -7,7 +7,7 @@ interface ILabelledValue {
   pwd: string;
   database: string;
   remote: string;
-  local: string | number;
+  local: string;
   tienda: number;
   almacen: number;
 }

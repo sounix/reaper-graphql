@@ -1,10 +1,7 @@
-
-import conn from "../SQL/conf";
-import fucts from "../SQL/dinamicConn";
-
+import controller from "../controllers/analisisArticulosC";
 const Resolvers = {
   Query: {
-    books: () => fucts(conn, "local", "vc"),
+    articulos: async () => await controller(),
   },
 };
 
