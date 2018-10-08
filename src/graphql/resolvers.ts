@@ -1,13 +1,8 @@
-import controller from "../controllers/analisisArticulosC";
+import Analisis, { getAllArticulos } from "../controllers/analisisArticulosC";
 const Resolvers = {
   Query: {
-   async articulos() {
-       return await controller();
-      },
-   async metadiaria(obj: any, { suc }: { suc: string }, context: any, info: any) {
-        console.log(suc);
-        return "hello";
-      },
+   articulos: async () => await getAllArticulos(),
+   metadiaria: (obj: any, args: any, context: any, info: any) => Analisis(obj, args, context, info),
   },
 };
 

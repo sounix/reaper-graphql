@@ -24,7 +24,7 @@ type Ttipo = "local" | "remote";
 function readConnection(i: IreadConf[], tipo: Ttipo, suc: Tsuc) {
   let objConn: IreadConf | undefined;
   i.map((c) => {
-    if (c.name === suc.toLowerCase() || c.suc === suc.toLowerCase()) {
+    if (c.name === suc.toLowerCase() || c.suc === suc.toUpperCase()) {
       objConn = c;
       return;
     }
