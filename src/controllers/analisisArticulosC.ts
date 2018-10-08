@@ -1,12 +1,17 @@
 import newQuery from "../SQL/dinamicConn";
 
+interface ISuc {
+  suc: string;
+}
+
 type Tsuc = "vc"|"zr"|"ou"|"jl";
 const stadistics = (suc: Tsuc) => {
   // TODO
 };
-async function analisiArticulosC(obj: any, { suc }: { suc: string }, context: any, info: any) {
+async function analisiArticulosC(obj: any, { suc }: ISuc, context: any, info: any) {
   // TODO
   console.log(obj, suc, context, info);
+  return suc;
 }
 
 const getAllArticulos = async () => {
