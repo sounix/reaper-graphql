@@ -21,7 +21,7 @@ type Ttipo = "local" | "remote";
  * @param tipo
  * @param suc
  */
-function readConnection(i: IreadConf[], tipo: Ttipo, suc: Tsuc) {
+function readConnection(i: IreadConf[], tipo: Ttipo, suc: Tsuc, database?: string) {
   let objConn: IreadConf | undefined;
   i.map((c) => {
     if (c.name === suc.toLowerCase() || c.suc === suc.toUpperCase()) {
@@ -29,25 +29,33 @@ function readConnection(i: IreadConf[], tipo: Ttipo, suc: Tsuc) {
       return;
     }
   });
-  if (objConn) {
-    const newDbConn = new db(objConn[tipo], objConn.database, objConn.user, objConn.pwd, objConn.port );
+  if (objConn && database) {
+    const newDbConn = new db(objConn[tipo], database, objConn.user, objConn.pwd, objConn.port );
+    return newDbConn;
+  } else if (objConn && database === undefined ) {
+    const newDbConn = new db(objConn[tipo], objConn.database , objConn.user, objConn.pwd, objConn.port );
     return newDbConn;
   }
   throw new Error("Error al crear conexion");
 }
+
 /**
  *
  * @param tipo "local" | "remote"
  * @param suc "vc" | "zr" | "ou" | "jl" | "bo"
  * @param query "cadena SQL"
+ * @param database si se define se esperara la base de datos del sistema | undefined
  */
-async function newRawQuery(tipo: Ttipo, suc: Tsuc, query: string) {
+async function newRawQuery(tipo: Ttipo, suc: Tsuc, query: string, database?: string) {
   // TODO
-  const goDb = readConnection(conf, tipo, suc);
-  if (goDb) {
+  if ( database ) {
+    const goDb = readConnection(conf, tipo, suc, database);
+    return goDb.rawQuery(query);
+  } else {
+    // TODO
+    const goDb = readConnection(conf, tipo, suc);
     return goDb.rawQuery(query);
   }
-  throw new Error("Lo sentimos no se ha podido crear la conexion");
 }
 
 export default newRawQuery;
