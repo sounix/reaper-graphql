@@ -11,6 +11,7 @@ const stadistics = (suc: Tsuc) => {
 };
 
 const getVentaSubfamilia = async (tipo: Ttipo, suc: Tsuc, database: string) => {
+  const { _Almacen, _Tienda, neW } = await newQuery(tipo, suc, database);
   const _SQLQ: string = `
     SELECT
       xMA.Almacen
@@ -24,20 +25,24 @@ const getVentaSubfamilia = async (tipo: Ttipo, suc: Tsuc, database: string) => {
     FROM QxDeMovAlmacen AS xMA
     LEFT JOIN Articulos AS zA ON zA.Articulo = xMA.Articulo
     LEFT JOIN Subfamilias AS ySF ON ySF.Subfamilia = zA.Subfamilia
-    WHERE xMA.Tienda = 1
-      AND CONVERT(DATE,xMA.Fecha) = CAST('20180108' AS DATE)
+    WHERE xMA.Tienda = ${_Tienda}
+      AND CONVERT(DATE,xMA.Fecha) = CAST(DATEADD(YEAR,-1,GETDATE()) AS DATE)
     GROUP BY zA.Subfamilia, ySF.Descripcion, xMA.Almacen
       , xMA.Tienda, xMA.DescripcionAlmacen, xMA.DescripcionTienda
     ORDER BY NumVentas DESC
   `;
-  return await newQuery(tipo, suc, _SQLQ, database);
+  return await neW.rawQuery(_SQLQ);
 };
-
+/**
+ *
+ * @param obj
+ * @param { suc }
+ * @param context
+ * @param info
+ */
 async function analisiArticulosC(obj: any, { suc }: ISuc, context: any, info: any) {
-  // TODO
   if ( suc === "vc" || "zr" || "ou" || "jl" || "bo" ) {
-    // TODOS
-    return await getVentaSubfamilia("local", suc , "SPASUPER1_201808");
+    return await getVentaSubfamilia("remote", suc , "SPACENTRO_201808");
   } else {
     throw new Error("Solo se aceptan valores como los sig: vc | zr | ou | jl | bo ");
   }
@@ -52,7 +57,8 @@ const getAllArticulos = async () => {
         + CAST(CAST(FactorVenta AS INT) AS VARCHAR) + UnidadVenta +']'
     FROM Articulos
   `;
-  return await newQuery("remote", "bo", _SQLQUERY);
+  const { neW } = await newQuery("remote", "bo");
+  return await neW.rawQuery(_SQLQUERY);
 };
 
 export default analisiArticulosC;

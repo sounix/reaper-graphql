@@ -13,7 +13,7 @@ const typeDefs = gql`
   # (A "Mutation" type will be covered later on.)
   type Query {
     articulos: [Articulos!]!,
-    metadiaria(suc:String): [AnalisiSuc]!,
+    metadiaria(suc:String): [AnalisiSuc],
   }
 
   # Consulta para analisis de venta

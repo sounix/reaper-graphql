@@ -1,4 +1,6 @@
+
 import Analisis, { getAllArticulos } from "../controllers/analisisArticulosC";
+
 const Resolvers = {
   Query: {
     articulos: async () => await getAllArticulos(),
