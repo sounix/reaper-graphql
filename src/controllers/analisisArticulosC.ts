@@ -71,7 +71,7 @@ const getDbLastDate = async (date: string, tipo: Ttipo, suc: Tsuc): Promise<ILas
  * @param info
  */
 
-async function previousDetailVenta(obj: any, { suc }: ISuc, context: any, info: any) {
+async function getPreviousDetailVenta(obj: any, { suc }: ISuc, context: any, info: any) {
     if ( suc === "vc" || "zr" || "ou" || "jl" || "bo" ) {
         if ( moment().month() === moment("20171001").month() &&
             suc === "jl" && moment("20171001").year() === moment().year() - 1 ) {
@@ -95,7 +95,7 @@ async function previousDetailVenta(obj: any, { suc }: ISuc, context: any, info: 
     }
 }
 
-async function latestDetailVenta( obj: any, { suc }:ISuc, context: any, info: any ) {
+async function getLatestDetailVenta( obj: any, { suc }:ISuc, context: any, info: any ) {
     if ( suc === "zr" || "vc" || "ou" || "jl" ) {
         try {
             return  await getVentaSubfamilia("remote", suc);
@@ -126,6 +126,6 @@ async function getAllArticulos() {
 
 export {
     getAllArticulos,
-    previousDetailVenta,
-    latestDetailVenta,
+    getPreviousDetailVenta,
+    getLatestDetailVenta,
 };
