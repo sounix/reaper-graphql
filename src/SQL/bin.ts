@@ -6,7 +6,6 @@ class ConnectionDB {
     this.database = database;
     this.user = user;
     this.pwd = pwd;
-    this.host = host;
   }
   /**
    * rawQuery
