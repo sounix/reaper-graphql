@@ -9,7 +9,7 @@ interface ISuc {
 type Tsuc = "vc" | "zr" | "ou" | "jl";
 type Ttipo = "local" | "remote";
 
-async function getMetaDeHoy({ suc }:{ suc: string }, year?: number, database?: string) {
+async function getMetaDeHoy({ suc }:{ suc: Tsuc }, year?: number, database?: string) {
 	const {  } = await newQuery("remote",suc, database)
 	const _SQLQUERY: string = `
 		SELECT 
