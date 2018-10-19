@@ -1,4 +1,4 @@
-import { Tsuc } from "../Types";
+import { Tsuc } from "../TSTypes";
 import newQuery from "../../SQL/dinamicConn";
 
 export default async function getMetaDeHoy({ suc }:{ suc: Tsuc }, year?: number, database?: string) {

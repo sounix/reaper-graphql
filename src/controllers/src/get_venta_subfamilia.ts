@@ -1,5 +1,5 @@
 import newQuery from "../../SQL/dinamicConn";
-import { Ttipo, Tsuc } from "../Types";
+import { Ttipo, Tsuc } from "../TSTypes";
 
 export default async function getVentaSubFamilia(tipo: Ttipo, suc: Tsuc, database?: string, tienda?: number, year?: number) {
 	const { _Tienda, neW } = await newQuery(tipo, suc, database);

@@ -1,4 +1,4 @@
-type Tsuc = "vc" | "zr" | "ou" | "jl";
+type Tsuc = "vc" | "zr" | "ou" | "jl"| "bo";
 type Ttipo = "local" | "remote";
 export {
 	Tsuc,

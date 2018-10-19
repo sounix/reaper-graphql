@@ -1,5 +1,5 @@
-import { ILastDB } from "../Interfaces";
-import { Ttipo, Tsuc } from "../Types";
+import { ILastDB } from "../TSInterfaces";
+import { Ttipo, Tsuc } from "../TSTypes";
 import newQuery from "../../SQL/dinamicConn";
 
 export default async function getDbNameforClosing (date: string, tipo: Ttipo, suc: Tsuc): Promise<ILastDB[]> {
