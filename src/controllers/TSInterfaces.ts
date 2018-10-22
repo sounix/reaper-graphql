@@ -1,7 +1,7 @@
 import db from "../SQL/bin";
 
 export interface ISuc {
-	suc: "vc" | "zr" | "ou" | "jl";
+	suc: "vc" | "zr" | "ou" | "jl" | "bo";
 }
 
 export interface ILastDB {
@@ -19,7 +19,8 @@ export interface IValuesofConfDb {
 	local: string;
 	tienda: number;
 	almacen: number;
-  }
+}
+
 export interface INewConnDb {
 	_Almacen: number;
 	_Tienda: number;

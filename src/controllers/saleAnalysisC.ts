@@ -35,6 +35,13 @@ async function getPreviousDetailVenta(obj: any, { suc }: ISuc, context: any, inf
 	}
 }
 
+/**
+ * 
+ * @param obj
+ * @param param1
+ * @param context
+ * @param info
+ */
 async function getLatestDetailVenta(obj: any, { suc }: ISuc, context: any, info: any) {
 	if (suc === "zr" || "vc" || "ou" || "jl") {
 		try {
