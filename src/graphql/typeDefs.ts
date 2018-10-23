@@ -31,7 +31,7 @@ const typeDefs = gql`
       VentaValorNeta: Float,
       NumVentas: Int
   }
-  ventaTotalDiaria {
+  type ventaTotalDiaria {
     TOTAL: Float
   }
 `;
