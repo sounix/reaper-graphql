@@ -18,6 +18,7 @@ const typeDefs = gql`
     ventaAnoAnterior(suc:String): [AnalisiSuc!]!,
     ventaAnoActual(suc: String): [AnalisiSuc!]!,
     ventatotaldiaria(suc: String): [ventaTotalDiaria!]!,
+    ventatotaldiariaanoanterior(suc: String): [ventaTotalDiaria!]!,
   }
 
   # Consulta para analisis de venta
