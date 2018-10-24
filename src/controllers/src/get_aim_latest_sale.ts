@@ -20,10 +20,10 @@ export default async function getAimLatestSale(suc: Tsuc, i_d_year = 0, database
         const { neW } = await newQuery("remote",suc, database);
 	    return await neW.rawQuery(_SQLQUERY);
     } else {
-         const namePreviousDB = await previousDB("201808","remote", suc);
-         const { neW }   =  await newQuery("remote", suc,namePreviousDB[0].name);
-         const _result: any  =   await neW.rawQuery(_SQLQUERY);
-         return _result[0].Total;
+		const namePreviousDB = await previousDB("201808","remote", suc);
+        const { neW	} = await newQuery("remote", suc,namePreviousDB[0].name);
+        const _result: any = await neW.rawQuery(_SQLQUERY);
+        return	_result[0].Total;
     }
 }
  
