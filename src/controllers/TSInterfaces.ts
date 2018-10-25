@@ -1,3 +1,4 @@
+
 import db from "../SQL/bin";
 
 export interface ISuc {
@@ -25,4 +26,8 @@ export interface INewConnDb {
 	_Almacen: number;
 	_Tienda: number;
 	neW: db;
+}
+
+export interface ITotalVenta {
+    Total: number;
 }

@@ -17,8 +17,8 @@ const typeDefs = gql`
     articulos: [Articulos!]!,
     ventaAnoAnterior(suc:String): [AnalisiSuc!]!,
     ventaAnoActual(suc: String): [AnalisiSuc!]!,
-    ventatotaldiaria(suc: String): [ventaTotalDiaria!]!,
-    ventatotaldiariaanoanterior(suc: String): [ventaTotalDiaria!]!,
+    ventaTotalDia(suc: String): Float!,
+    ventaTotalDiaAnoAnterior(suc: String): Float!,
   }
 
   # Consulta para analisis de venta
@@ -31,9 +31,6 @@ const typeDefs = gql`
       Descripcion: String,
       VentaValorNeta: Float,
       NumVentas: Int
-  }
-  type ventaTotalDiaria {
-    TOTAL: Float
   }
 `;
 
