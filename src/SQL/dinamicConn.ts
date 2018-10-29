@@ -43,7 +43,6 @@ function readConnection(i: IValuesofConfDb[], tipo: Ttipo, suc: Tsuc, database?:
  * @param database si se define se esperara la base de datos del sistema | undefined
  */
 async function newRawQuery(tipo: Ttipo, suc: Tsuc, database?: string): Promise<INewConnDb> {
-  // TODO
   if ( database ) {
     const { _Almacen, _Tienda, neW } = readConnection(conf, tipo, suc, database);
     return {
@@ -52,7 +51,6 @@ async function newRawQuery(tipo: Ttipo, suc: Tsuc, database?: string): Promise<I
       neW,
     };
   } else {
-    // TODO
     const { _Almacen, _Tienda, neW } = readConnection(conf, tipo, suc);
     return {
       _Almacen,

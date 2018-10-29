@@ -2,10 +2,7 @@ import Sequelize from "sequelize";
 
 class ConnectionDB {
   constructor(private host: string, public database: string, private user: string, private pwd: string, port?: number) {
-    this.host = host;
-    this.database = database;
-    this.user = user;
-    this.pwd = pwd;
+      // TODO
   }
   /**
    * rawQuery
