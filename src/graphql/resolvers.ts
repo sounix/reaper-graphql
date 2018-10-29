@@ -1,18 +1,19 @@
 
-import { 
-    getPreviousDetailVenta as previousDetailVenta, 
-    getLatestDetailVenta as latestDetailVenta 
-} from "../controllers/saleAnalysisC";
+import { getAimDayofPreviousYear, getMetadelDia as getAimLatestSaleC } from "../controllers/getAimLatestSaleC";
 import getAllArticlesC from "../controllers/getAllArticlesC";
-import { getMetadelDia as getAimLatestSaleC, getAimDayofPreviousYear } from "../controllers/getAimLatestSaleC";
+import {
+	getLatestDetailVenta as latestDetailVenta,
+	getPreviousDetailVenta as previousDetailVenta,
+} from "../controllers/saleAnalysisC";
+
 const Resolvers = {
-    Query: {
-        articulos: async () => await getAllArticlesC(),
-        ventaAnoAnterior: async (obj: any, args: any, context: any, info: any) => await previousDetailVenta(obj, args, context, info),
-        ventaAnoActual: async (obj: any, args: any, context: any, info:any ) => await latestDetailVenta( obj, args, context, info ),
-        ventaTotalDia:  async (obj: any, args: any, context: any, info: any) =>  await getAimLatestSaleC(obj, args, context, info),
-        ventaTotalDiaAnoAnterior: async (obj: any, args: any, context: any, info: any ) => await getAimDayofPreviousYear(obj, args, context, info),
-    },
+	Query: {
+		articulos: async () => await getAllArticlesC(),
+		ventaAnoActual: async (_: any, args: any) => await latestDetailVenta( _, args),
+		ventaAnoAnterior: async (_: any, args: any) => await previousDetailVenta(_, args),
+		ventaTotalDia:  async (_: any, args: any) =>  await getAimLatestSaleC(_, args),
+		ventaTotalDiaAnoAnterior: async (_: any, args: any) => await getAimDayofPreviousYear(_, args),
+	},
 };
 
 export default Resolvers;

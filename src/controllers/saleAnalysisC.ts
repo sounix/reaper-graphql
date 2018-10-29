@@ -1,8 +1,8 @@
 
 import moment from "moment";
-import getVentaSubfamilia from "./src/get_venta_subfamilia";
 import getDbNameforClosing from "./src/get_select_db_of_closing";
-import { ISuc, ILastDB } from "./TSInterfaces";
+import getVentaSubfamilia from "./src/get_venta_subfamilia";
+import { ILastDB, ISuc } from "./TSInterfaces";
 
 /**
  *
@@ -11,7 +11,7 @@ import { ISuc, ILastDB } from "./TSInterfaces";
  * @param context
  * @param info
  */
-async function getPreviousDetailVenta(obj: any, { suc }: ISuc, context: any, info: any) {
+async function getPreviousDetailVenta(obj: any, { suc }: ISuc, context?: any, info?: any) {
 	if (suc === "vc" || "zr" || "ou" || "jl" || "bo") {
 		try {
 			const lastDB = await getDbNameforClosing("201808", "remote", suc);
@@ -26,13 +26,13 @@ async function getPreviousDetailVenta(obj: any, { suc }: ISuc, context: any, inf
 }
 
 /**
- * 
+ *
  * @param obj
  * @param param1
  * @param context
  * @param info
  */
-async function getLatestDetailVenta(obj: any, { suc }: ISuc, context: any, info: any) {
+async function getLatestDetailVenta(obj: any, { suc }: ISuc, context?: any, info?: any) {
 	if (suc === "zr" || "vc" || "ou" || "jl") {
 		try {
 			return await getVentaSubfamilia("remote", suc);

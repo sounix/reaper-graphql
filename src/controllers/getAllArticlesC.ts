@@ -1,4 +1,4 @@
-import newQuery from "../SQL/dinamicConn"
+import newQuery from "../SQL/dinamicConn";
 export default async function getAllArticulos() {
 	const _SQLQUERY: string = `
         SELECT Articulo

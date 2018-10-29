@@ -29,5 +29,5 @@ export interface INewConnDb {
 }
 
 export interface ITotalVenta {
-    Total: number;
+	Total: number;
 }
