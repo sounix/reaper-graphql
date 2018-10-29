@@ -1,6 +1,6 @@
 node_modules
 package-lock.json
-src/SQL/conf.ts
 build
+src/SQL/conf.ts
 yarn.lock
 yarn-error.log
