@@ -1,8 +1,8 @@
-import { ILastDB } from "../TSInterfaces";
-import { Ttipo, Tsuc } from "../TSTypes";
 import newQuery from "../../SQL/dinamicConn";
+import { ILastDB } from "../TSInterfaces";
+import { Tsuc, Ttipo } from "../TSTypes";
 
-export default async function getDbNameforClosing (date: string, tipo: Ttipo, suc: Tsuc): Promise<ILastDB[]> {
+export default async function getDbNameforClosing(date: string, tipo: Ttipo, suc: Tsuc): Promise<ILastDB[]> {
 	try {
 		const { neW } = await newQuery(tipo, suc);
 		const lastDbName: string = `${neW.database}_${date}`;
@@ -13,4 +13,4 @@ export default async function getDbNameforClosing (date: string, tipo: Ttipo, su
 	} catch (e) {
 		throw new Error(`get_select_db_for_name:\t \n ${e}`);
 	}
-};
+}

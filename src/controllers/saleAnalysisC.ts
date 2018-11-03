@@ -1,7 +1,7 @@
 
 import { FILTER_ARRAY_OBJECTS } from "./src/func_filter";
 import getDbNameforClosing from "./src/get_select_db_of_closing";
-import getVentaSubfamilia from "./src/get_venta_subfamilia";
+import { getVentaSubFamilia } from "./src/get_venta_subfamilia";
 import { ILastDB } from "./TSInterfaces";
 import { Tsuc } from "./TSTypes";
 
@@ -18,7 +18,7 @@ async function getPreviousDetailVenta(obj: any, { suc, filter= "no" }: { suc: Ts
 			try {
 				const lastDB = await getDbNameforClosing("201808", "remote", suc);
 				const nameLastDb: ILastDB = lastDB[0];
-				const data: [] = await getVentaSubfamilia("remote", suc, nameLastDb.name, undefined, -1);
+				const data: [] = await getVentaSubFamilia("remote", suc, nameLastDb.name, undefined, -1);
 				return await FILTER_ARRAY_OBJECTS(filter, data, "Descripcion");
 
 			} catch (e) {
@@ -28,7 +28,7 @@ async function getPreviousDetailVenta(obj: any, { suc, filter= "no" }: { suc: Ts
 			try {
 				const lastDB = await getDbNameforClosing("201808", "remote", suc);
 				const nameLastDb: ILastDB = lastDB[0];
-				return await getVentaSubfamilia("remote", suc, nameLastDb.name, undefined, -1);
+				return await getVentaSubFamilia("remote", suc, nameLastDb.name, undefined, -1);
 			} catch (e) {
 				throw new Error(`analisisArticulos: \n ${e}`);
 			}
@@ -49,10 +49,10 @@ async function getLatestDetailVenta(obj: any, { suc, filter = "no" }: { suc: Tsu
 	if (suc) {
 		try {
 			if (filter !== "no") {
-				const data: object[] = await getVentaSubfamilia("remote", suc);
+				const data: object[] = await getVentaSubFamilia("remote", suc);
 				return await FILTER_ARRAY_OBJECTS(filter, data, "Descripcion");
 			} else {
-				return await getVentaSubfamilia("remote", suc);
+				return await getVentaSubFamilia("remote", suc);
 			}
 		} catch (e) {
 			throw new Error(`latestDetailVenta: \n ${e}`);
