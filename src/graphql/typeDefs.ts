@@ -16,7 +16,7 @@ const typeDefs = gql`
   type Query {
     articulos: [Articulos!]!,
     ventaAnoAnterior(suc:String, filter: String): [AnalisiSuc!]!,
-    ventaAnoActual(suc: String): [AnalisiSuc!]!,
+    ventaAnoActual(suc: String, filter: String): [AnalisiSuc!]!,
     ventaTotalDia(suc: String): Float!,
     ventaTotalDiaAnoAnterior(suc: String): Float!,
   }
