@@ -15,7 +15,7 @@ const typeDefs = gql`
   # (A "Mutation" type will be covered later on.)
   type Query {
     articulos: [Articulos!]!,
-    ventaAnoAnterior(suc:String): [AnalisiSuc!]!,
+    ventaAnoAnterior(suc:String, filter: String): [AnalisiSuc!]!,
     ventaAnoActual(suc: String): [AnalisiSuc!]!,
     ventaTotalDia(suc: String): Float!,
     ventaTotalDiaAnoAnterior(suc: String): Float!,

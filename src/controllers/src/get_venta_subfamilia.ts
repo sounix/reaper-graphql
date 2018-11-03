@@ -20,7 +20,6 @@ export default async function getVentaSubFamilia(tipo: Ttipo, suc: Tsuc, databas
 			AND CONVERT(DATE,xMA.Fecha) = CAST(DATEADD(YEAR, ${ year ? year : 0} ,GETDATE()) AS DATE)
 		GROUP BY zA.Subfamilia, ySF.Descripcion, xMA.Almacen, 
 			xMA.Tienda, xMA.DescripcionAlmacen, xMA.DescripcionTienda
-		ORDER BY NumVentas DESC
   `;
 	return await neW.rawQuery(_SQLQUERY);
 }

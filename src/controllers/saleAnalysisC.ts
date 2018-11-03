@@ -2,7 +2,9 @@
 import moment from "moment";
 import getDbNameforClosing from "./src/get_select_db_of_closing";
 import getVentaSubfamilia from "./src/get_venta_subfamilia";
-import { ILastDB, ISuc } from "./TSInterfaces";
+import { filter_array_objects } from "./src/func_filter";
+import { ILastDB, ISuc} from "./TSInterfaces";
+import { Tsuc } from "./TSTypes";
 
 /**
  *
@@ -11,17 +13,30 @@ import { ILastDB, ISuc } from "./TSInterfaces";
  * @param context
  * @param info
  */
-async function getPreviousDetailVenta(obj: any, { suc }: ISuc, context?: any, info?: any) {
-	if (suc === "vc" || "zr" || "ou" || "jl" || "bo") {
-		try {
-			const lastDB = await getDbNameforClosing("201808", "remote", suc);
-			const nameLastDb: ILastDB = lastDB[0];
-			return await getVentaSubfamilia("remote", suc, nameLastDb.name, undefined, -1);
-		} catch (e) {
-			throw new Error(`analisisArticulos: \n ${e}`);
-		}
+async function getPreviousDetailVenta(obj: any, { suc, filter="no" }: { suc: Tsuc, filter: string }, context?: any, info?: any) {
+	if (suc) {
+        if(filter !== "no"){
+            try {
+			    const lastDB = await getDbNameforClosing("201808", "remote", suc);
+			    const nameLastDb: ILastDB = lastDB[0];
+			    const data = await getVentaSubfamilia("remote", suc, nameLastDb.name,undefined, -1);
+                // console.log(data,data[0]["Descripcion"])
+                return await filter_array_objects(filter,data[0],"Descripcion");
+
+		    } catch (e) {
+			    throw new Error(`analisisArticulos: \n ${e}`);
+		    }
+        } else {
+            try {
+			    const lastDB = await getDbNameforClosing("201808", "remote", suc);
+			    const nameLastDb: ILastDB = lastDB[0];
+			    return await getVentaSubfamilia("remote", suc, nameLastDb.name,undefined, -1);
+		    } catch (e) {
+			    throw new Error(`analisisArticulos: \n ${e}`);
+		    }
+        }
 	} else {
-		throw new Error("Solo se aceptan valores como los sig: vc | zr | ou | jl | bo ");
+		throw new Error("Solo se aceptan valores como los sig: vc | zr | ou | jl ");
 	}
 }
 
@@ -33,7 +48,7 @@ async function getPreviousDetailVenta(obj: any, { suc }: ISuc, context?: any, in
  * @param info
  */
 async function getLatestDetailVenta(obj: any, { suc }: ISuc, context?: any, info?: any) {
-	if (suc === "zr" || "vc" || "ou" || "jl") {
+	if (suc) {
 		try {
 			return await getVentaSubfamilia("remote", suc);
 		} catch (e) {
