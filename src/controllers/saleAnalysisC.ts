@@ -19,7 +19,6 @@ async function getPreviousDetailVenta(obj: any, { suc, filter= "no" }: { suc: Ts
 				const lastDB = await getDbNameforClosing("201808", "remote", suc);
 				const nameLastDb: ILastDB = lastDB[0];
 				const data: [] = await getVentaSubfamilia("remote", suc, nameLastDb.name, undefined, -1);
-				// console.log(data,data[0]["Descripcion"])
 				return await FILTER_ARRAY_OBJECTS(filter, data, "Descripcion");
 
 			} catch (e) {
