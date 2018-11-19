@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc",
     "build:run": "node build/index.js",
-    "start": "yarn build && yarn build:run"
+    "start": "npm run build && npm run build:run"
   },
   "author": "ErickVAleman",
   "license": "MIT",

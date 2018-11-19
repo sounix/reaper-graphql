@@ -32,7 +32,7 @@ class ConnectionDB {
 	return created = new Sequelize( this.database, this.user, this.pwd, {
 		host: this.host,
 		// tslint:disable-next-line:object-literal-sort-keys
-		dialect: "mssql",
+	  dialect: "mssql",
 	});
   }
 
