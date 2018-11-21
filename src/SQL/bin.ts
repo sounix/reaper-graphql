@@ -1,3 +1,4 @@
+
 import Sequelize from "sequelize";
 
 class ConnectionDB {
@@ -13,6 +14,15 @@ class ConnectionDB {
 	let result = [];
 	if (ask.authenticate()) {
 		return result = await ask.query(query, { type: ask.QueryTypes.SELECT });
+	}
+	throw new Error("No existe coneccion con la base de datos");
+  }
+
+  public async rawInsert(query: string) {
+	const ask = this.createConn();
+	let result = [];
+	if (ask.authenticate()) {
+		return result = await ask.query(query, { type: ask.QueryTypes.INSERT });
 	}
 	throw new Error("No existe coneccion con la base de datos");
   }

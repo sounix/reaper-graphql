@@ -1,6 +1,6 @@
 
 import db from "../SQL/bin";
-import conf from "../SQL/conf";
+import conf from "../SQL/confWincaja";
 
 async function ventaTiempoAireAll(obj: any, args: any) {
 	const { where, orderBy } = args;
@@ -9,8 +9,8 @@ async function ventaTiempoAireAll(obj: any, args: any) {
 	_SQLQUERY += ventaTiempoAireOrderBy(orderBy);
 
 	try {
-		const _BODEGA = conf[1];
-		const _MSSQL = new db(_BODEGA.local, _BODEGA.database, _BODEGA.user, _BODEGA.pwd, _BODEGA.port);
+		const _CONF = conf.SPAZARAGOZA;
+		const _MSSQL = new db(_CONF.remote, _CONF.database, _CONF.user, _CONF.pwd, _CONF.port);
 		const _TIPOS = await _MSSQL.rawQuery(_SQLQUERY);
 		return {
 			total: ventaTiempoAireTotal(_TIPOS),

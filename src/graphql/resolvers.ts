@@ -30,6 +30,10 @@ const resolverMap = {
 };
 
 import productosAll from "../controllers/ProductosController";
+import {
+	proveedorAddBitacora, proveedorAddCompra,
+	proveedorAddWincaja, proveedoresAll,
+} from "../controllers/ProveedoresController";
 import ventaTiempoAireAll from "../controllers/TiempoAireController";
 
 const Resolvers = {
@@ -41,7 +45,14 @@ const Resolvers = {
 		ventaTotalDiaAnoAnterior: async (_: any, args: any) => await getAimDayofPreviousYear(_, args),
 
 		productos: async (_: any, args: any) => await productosAll(_, args),
+		proveedores: async (_: any, args: any) => await proveedoresAll(_, args),
 		ventatiempoaire: async (_: any, args: any) => await ventaTiempoAireAll(_, args),
+	},
+	// tslint:disable-next-line:object-literal-sort-keys
+	Mutation: {
+		proveedoraddbitacora: async (_: any, args: any) => await proveedorAddBitacora(_, args),
+		proveedoraddcompra: async (_: any, args: any) => await proveedorAddCompra(_, args),
+		proveedoraddwincaja: async (_: any, args: any) => await proveedorAddWincaja(_, args),
 	},
 };
 
