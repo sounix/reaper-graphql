@@ -158,9 +158,9 @@ const typeDefs = gql`
 	}
 
 	type Mutation {
-		proveedoraddcompra(cuenta: String!, nombre: String!, rfc: String!): Boleean!,
-		proveedoraddbitacora(cuenta: String!, nombre: String!, rfc: String!): Boleean!,
-		proveedoraddwincaja(insert: ProveedorInsertInput): Boleean!,
+		proveedoraddcompra(cuenta: String!, nombre: String!, rfc: String!): Boolean!,
+		proveedoraddbitacora(cuenta: String!, nombre: String!, rfc: String!): Boolean!,
+		proveedoraddwincaja(insert: ProveedorInsertInput): Boolean!,
 	}
 
 `;

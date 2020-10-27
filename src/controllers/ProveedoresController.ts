@@ -13,7 +13,7 @@ async function proveedorAddCompra(obj: any, args: any) {
 		const _CONF = conf.SPACOMPRAS;
 		const _MSSQL = new db(_CONF.host, _CONF.database, _CONF.user, _CONF.pwd, _CONF.port);
 		const _PROVEEDOR = await _MSSQL.rawInsert(_SQLQUERY);
-		return 0;
+		return true;
 	} catch (e) {
 		throw new Error(`proveedorAddCompra: \n ${e}`);
 	}
@@ -30,7 +30,7 @@ async function proveedorAddBitacora(obj: any, args: any) {
 		const _CONF = conf.SPABITACORA;
 		const _MSSQL = new db(_CONF.host, _CONF.database, _CONF.user, _CONF.pwd, _CONF.port);
 		const _PROVEEDOR = await _MSSQL.rawInsert(_SQLQUERY);
-		return 0;
+		return true;
 	} catch (e) {
 		throw new Error(`proveedorAddCompra: \n ${e}`);
 	}
@@ -67,7 +67,7 @@ async function proveedorAddWincaja(obj: any, args: any) {
 		}
 		const _MSSQL = new db(_CONF.host, _CONF.database, _CONF.user, _CONF.pwd, _CONF.port);
 		const _PROVEEDOR = await _MSSQL.rawInsert(_SQLQUERY);
-		return 0;
+		return true;
 	} catch (e) {
 		throw new Error(`proveedorAddWincaja: \n ${e}`);
 	}
@@ -187,6 +187,7 @@ async function WincajaOrigen(args: any, suc: string) {
 		}
 		const _MSSQL = new db(_CONF.host, _CONF.database, _CONF.user, _CONF.pwd, _CONF.port);
 		const _PROVEEDORES = await _MSSQL.rawQuery(_SQLQUERY);
+		console.log(_PROVEEDORES);
 		return {
 			count: _PROVEEDORES.length,
 			// tslint:disable-next-line:object-literal-sort-keys
